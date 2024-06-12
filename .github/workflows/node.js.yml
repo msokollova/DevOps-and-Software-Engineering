@@ -48,5 +48,5 @@ jobs:
     - name: Deploy to production
       uses: johnbeynon/render-deploy-action@v0.0.8
       with:
-        service-id: ${{ SERVICE_ID }}
-        api-key: ${{ RENDER_TOKEN }}
+        service-id: ${{ secrets.SERVICE_ID }}
+        api-key: ${{ secrets.RENDER_TOKEN }}
