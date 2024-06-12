@@ -32,6 +32,16 @@ server.put('/books/:id', (req, res) => {
     }
 });
 
+server.patch('/books/:id', (req, res) => {
+    const book = books.find(b => b.id === req.params.id);
+    if (book) {
+        Object.assign(book, req.body); 
+        res.json(book);
+    } else {
+        res.status(404).json({ message: 'Book not found' });
+    }
+});
+
 server.delete('/books/:id', (req, res) => {
     const bookIndex = books.findIndex(b => b.id === req.params.id);
     if (bookIndex > -1) {
@@ -42,6 +52,10 @@ server.delete('/books/:id', (req, res) => {
     }
 });
 
-server.listen(3000, () => console.log('Server is up and running'));
+//     server.listen(3000, () => console.log('Server is up and running'));
+
+if (require.main === module){
+    server.listen(3000, () => console.log('Server is up and running'));
+}
 
 module.exports = server; // Exporting for testing
