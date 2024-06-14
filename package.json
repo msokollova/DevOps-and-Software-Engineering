@@ -4,8 +4,10 @@
     "description": "Online Book Library Single Page Application",
     "main": "index.html",
     "scripts": {
-        "test": "mocha tests",
-        "start": "http-server -a localhost -p 3000 -P http://localhost:3000? -c-1"
+        "start-fe": "http-server -a localhost -p 3000 -P http://localhost:3000? -c-1",
+        "start-be": "cd server && node server.js",
+        "test:ui": "npx playwright test tests/ui.test.js",
+        "test:ui-debug": "npx playwright test tests/ui.test.js --ui"
     },
     "author": "",
     "license": "ISC",
