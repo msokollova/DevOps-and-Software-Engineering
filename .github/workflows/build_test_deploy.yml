@@ -30,3 +30,32 @@ jobs:
     - name: Start UI tests
       run: npm run test:ui
 
+  deploy-backend:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: build_and_test
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - name: Deploy Backend
+        uses: JorgeLNJunior/render-deploy@v1.4.4
+        with:
+          service_id: ${{ secrets.BACKEND_API_KEYD }}
+          api_key: ${{ secrets.RENDER_TOKEN }}
+          wait_deploy: true
+          github_token: ${{ secrets.TOKEN_GH }}
+
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: build_and_test
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - name: Deploy Backend
+        uses: JorgeLNJunior/render-deploy@v1.4.4
+        with:
+          service_id: ${{ secrets.FRONDEND_API_KEY }}
+          api_key: ${{ secrets.RENDER_TOKEN }}
+          wait_deploy: true
+          github_token: ${{ secrets.TOKEN_GH }}
