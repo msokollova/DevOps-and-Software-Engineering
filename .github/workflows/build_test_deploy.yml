@@ -48,7 +48,7 @@ jobs:
   deploy-frontend:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    needs: build_and_test
+    needs: deploy-backend
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
