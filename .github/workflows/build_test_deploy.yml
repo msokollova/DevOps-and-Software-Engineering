@@ -2,9 +2,9 @@ name: Build and Test
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
   workflow_dispatch:
 
 jobs:
@@ -32,7 +32,7 @@ jobs:
 
   deploy-backend:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master'
     needs: build_and_test
     steps:
       - name: Checkout the code
@@ -48,7 +48,7 @@ jobs:
 
   deploy-frontend:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master'
     needs: deploy-backend
     steps:
       - name: Checkout the code
