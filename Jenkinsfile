@@ -7,6 +7,11 @@ pipeline{
             }
            
         }
+        stage("NPM Audit"){
+            steps{
+                bat 'npm audit'
+            }
+           
+        }
     }
-    
 }
