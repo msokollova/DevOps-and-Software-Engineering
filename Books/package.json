@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "start-server": "node server",
+    "start-mocha": "npx mocha api.test.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "chai": "^4.4.1",
+    "chai-http": "^4.4.0",
+    "express": "^4.19.2",
+    "mocha": "^10.4.0"
+  }
+}
